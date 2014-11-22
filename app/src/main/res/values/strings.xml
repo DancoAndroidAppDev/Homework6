@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Homework6</string>
+    <string name="app_name">Homework 6</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="another_text_view">More Text</string>
+
+    <string name="primitive_type">Primitive</string>
+    <string name="serialized_object">Serialized</string>
+    <string name="parcealable_object">Parcealable</string>
+    <string name="email_address">Enter email address</string>
+    <string name="user_name">Enter username</string>
+    <string name="password">Enter password</string>
+    <string name="title_activity_results">ResultsActivity</string>
+    <string name="no_make">Make cannot be empty</string>
+    <string name="no_model">Model cannot be empty</string>
+    <string name="no_year">Year cannot be empty</string>
 
     <string-array name="states">
         <item>Alabama</item>
