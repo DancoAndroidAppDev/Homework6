@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableLayout1"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="32dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--android:fitsSystemWindows="true"
+    android:clipToPadding="false">-->
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
+    <EditText
+        android:id="@+id/user_name"
+        android:layout_centerHorizontal="true"
+        android:layout_width="320dp"
+        android:layout_height="64dp"
+        android:hint="@string/user_name" />
+
+    <EditText
+        android:id="@+id/email_address"
+        android:layout_below="@id/user_name"
+        android:layout_width="320dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="64dp"
+        android:hint="@string/email_address" />
+
+    <EditText
+        android:id="@+id/password"
+        android:inputType="textPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/email_address"
+        android:layout_width="320dp"
+        android:layout_height="64dp"
+        android:hint="@string/password" />
+
+    <LinearLayout
+        android:layout_below="@+id/password"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/primitive_type_button"
+            android:layout_weight="1"
+            android:textColor="@android:color/white"
+            android:text="@string/primitive_type"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/button_background"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!--<Button-->
+            <!--android:id="@+id/serialized_type_button"-->
+            <!--android:layout_weight="1"-->
+            <!--android:textColor="@android:color/white"-->
+            <!--android:text="@string/serialized_object"-->
+            <!--android:layout_marginStart="4dp"-->
+            <!--android:layout_marginEnd="4dp"-->
+            <!--android:background="@drawable/button_background"-->
+            <!--style="?android:attr/buttonBarButtonStyle"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/parcealable_type_button"-->
+            <!--android:layout_weight="1"-->
+            <!--android:textColor="@android:color/white"-->
+            <!--android:text="@string/parcealable_object"-->
+            <!--android:layout_marginStart="4dp"-->
+            <!--android:background="@drawable/button_background"-->
+            <!--style="?android:attr/buttonBarButtonStyle"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content" />-->
+
+    </LinearLayout>
+</RelativeLayout>
