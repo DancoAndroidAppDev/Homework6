@@ -5,8 +5,12 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +28,7 @@ import java.util.List;
 import java.util.Random;
 
 
-public class MyActivity extends Activity {
+public class MyActivity extends ActionBarActivity {
     public static final String TAG = MyActivity.class.getCanonicalName();
     public static final String VIEW_FLAG = "View flag";
     public static final String VIEW_FLOWER = "View flower";
@@ -38,7 +42,7 @@ public class MyActivity extends Activity {
     }
 
     private GridView gridView;
-//    private TextView textView;
+    private TextView textView;
 
     private Random rand = new Random();
     private final List<Integer> cellIndecies = new ArrayList<Integer>(50);
@@ -49,6 +53,24 @@ public class MyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        if (toolbar != null) {
+//            setSupportActionBar(toolbar);
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//            toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+//        }
+
+        Intent data = getIntent();
+        String username = data.getStringExtra("username");
+        if (username == null) {
+            // try to read username from prefs
+            SharedPreferences prefs = getSharedPreferences(LoginActivity.APP_SHARED_PREFS,
+                    Activity.MODE_PRIVATE);
+            username = prefs.getString("username", "dude");
+        }
+
+        setTitle("Welcome " + username);
 
         final String[] flowers = getResources().getStringArray(R.array.flowers);
         theStates = Arrays.asList(getResources().getStringArray(R.array.states));
@@ -110,6 +132,8 @@ public class MyActivity extends Activity {
             fontSize -= 1;
             loadContent();
             return true;
+        } else if (id == R.id.logout) {
+            doLogout();
         } else if (id == R.id.animate) {
             doAnimate();
         } else if (id == R.id.animate_all) {
@@ -118,30 +142,43 @@ public class MyActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void doLogout() {
+        String prefs = LoginActivity.APP_SHARED_PREFS;
 
-//    @Override
-//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-//        super.onCreateContextMenu(menu, v, menuInfo);
-//        textView = (TextView) v;
-//        String stateName = textView.getText().toString();
-//        menu.setHeaderTitle(stateName);
-//        position = theStates.indexOf(stateName);
-//        menu.add(0, v.getId(), 0, VIEW_FLOWER);
-//        menu.add(0, v.getId(), 0, VIEW_FLAG);
-//    }
-//
-//
-//    @Override
-//    public boolean onContextItemSelected(MenuItem item) {
-//        if (item.getTitle().equals(VIEW_FLAG)) {
-//            showFlagView();
-//        } else if (item.getTitle().equals(VIEW_FLOWER)) {
-//            showFlowerView();
-//        }
-//
-//        return true;
-//    }
-//
+        SharedPreferences sharedPrefs = getSharedPreferences(prefs, Activity.MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = sharedPrefs.edit();
+
+        prefsEditor.remove("username");
+        prefsEditor.apply();
+
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+    }
+
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        textView = (TextView) v;
+        String stateName = textView.getText().toString();
+        menu.setHeaderTitle(stateName);
+        position = theStates.indexOf(stateName);
+        menu.add(0, v.getId(), 0, VIEW_FLOWER);
+        menu.add(0, v.getId(), 0, VIEW_FLAG);
+    }
+
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        if (item.getTitle().equals(VIEW_FLAG)) {
+            showFlagView();
+        } else if (item.getTitle().equals(VIEW_FLOWER)) {
+            showFlowerView();
+        }
+
+        return true;
+    }
+
     public void doAnimate() {
         int position = rand.nextInt(gridView.getChildCount());
 

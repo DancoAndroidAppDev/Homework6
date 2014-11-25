@@ -18,21 +18,23 @@
         android:layout_centerHorizontal="true"
         android:layout_width="320dp"
         android:layout_height="64dp"
-        android:hint="@string/user_name" />
+        android:hint="@string/user_name"
+        android:layout_below="@id/toolbar" />
 
     <EditText
-        android:id="@+id/email_address"
-        android:layout_below="@id/user_name"
-        android:layout_width="320dp"
+        android:id="@+id/email_addr"
+        android:inputType="textEmailAddress"
         android:layout_centerHorizontal="true"
+        android:layout_width="320dp"
         android:layout_height="64dp"
-        android:hint="@string/email_address" />
+        android:hint="@string/email_address"
+        android:layout_below="@id/user_name" />
 
     <EditText
         android:id="@+id/password"
         android:inputType="textPassword"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/email_address"
+        android:layout_below="@id/email_addr"
         android:layout_width="320dp"
         android:layout_height="64dp"
         android:hint="@string/password" />
@@ -45,14 +47,14 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/primitive_type_button"
+            android:id="@+id/button_login"
             android:layout_weight="1"
             android:textColor="@android:color/white"
-            android:text="@string/primitive_type"
+            android:text="@string/Login"
             android:layout_marginEnd="4dp"
             android:background="@drawable/button_background"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <!--<Button-->

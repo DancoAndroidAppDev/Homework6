@@ -1,23 +1,23 @@
 package net.cozz.danco.homework6;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.List;
 
 
-public class ViewFlagActivity extends Activity {
+public class ViewFlagActivity extends ActionBarActivity {
 
     //get the array of flag IDs
     public Integer[] flagsIds = {
@@ -42,21 +42,27 @@ public class ViewFlagActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_flag);
-
-
-        // Inflate your custom layout
-        final ViewGroup actionBarLayout =
-                (ViewGroup) getLayoutInflater().inflate(R.layout.action_bar, null);
+        setContentView(R.layout.activity_view_flag);
 
         // Set up your ActionBar
         final ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowCustomEnabled(true);
 
-        // You customization
+        // Your customization
         final int actionBarColor = getResources().getColor(R.color.action_bar);
         actionBar.setBackgroundDrawable(new ColorDrawable(actionBarColor));
+
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        if (toolbar != null) {
+//            setSupportActionBar(toolbar);
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//            toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+//        }
+//
+//        //enable the Android home button
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setHomeButtonEnabled(true);
 
         final List<String> capitals =
                 Arrays.asList(getResources().getStringArray(R.array.capitals));
@@ -73,8 +79,8 @@ public class ViewFlagActivity extends Activity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(getApplicationContext(),
-//                        "Capital is " + capitals.get(position), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),
+                        "Capital is " + capitals.get(position), Toast.LENGTH_LONG).show();
 
                 final WebView webView = (WebView) findViewById(R.id.activity_my_web_view);
 //                Intent i = new Intent(Intent.ACTION_WEB_SEARCH);
