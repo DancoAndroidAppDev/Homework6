@@ -9,4 +9,7 @@
     android:textColorPrimary="@color/white"
     android:actionMenuTextColor="@color/white"
     app:theme="@style/ThemeOverlay.AppCompat.Light"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
+
+
+    </app:android.support.v7.widget.Toolbar>

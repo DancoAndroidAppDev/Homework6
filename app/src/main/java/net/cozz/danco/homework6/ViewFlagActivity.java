@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,24 +46,16 @@ public class ViewFlagActivity extends ActionBarActivity {
         setContentView(R.layout.activity_view_flag);
 
         // Set up your ActionBar
-        final ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowCustomEnabled(true);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        }
 
-        // Your customization
-        final int actionBarColor = getResources().getColor(R.color.action_bar);
-        actionBar.setBackgroundDrawable(new ColorDrawable(actionBarColor));
-
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        if (toolbar != null) {
-//            setSupportActionBar(toolbar);
-//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//            toolbar.setTitleTextColor(getResources().getColor(R.color.white));
-//        }
-//
-//        //enable the Android home button
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setHomeButtonEnabled(true);
+        //enable the Android home button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
         final List<String> capitals =
                 Arrays.asList(getResources().getStringArray(R.array.capitals));

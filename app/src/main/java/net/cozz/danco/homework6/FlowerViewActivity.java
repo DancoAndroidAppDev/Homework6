@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -13,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class FlowerViewActivity extends Activity {
+public class FlowerViewActivity extends ActionBarActivity {
     //get the array of flag IDs
     public Integer[] flowerIds = {
             R.drawable.alabama_flower, R.drawable.alaska_flower, R.drawable.arizona_flower, R.drawable.arkansas_flower,
@@ -39,12 +41,16 @@ public class FlowerViewActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_flower);
 
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        }
 
-        final int actionBarColor = getResources().getColor(R.color.action_bar);
-        actionBar.setBackgroundDrawable(new ColorDrawable(actionBarColor));
+        //enable the Android home button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
         final List<String> flowers =
                 Arrays.asList(getResources().getStringArray(R.array.flowers));

@@ -27,6 +27,7 @@ public class LoginActivity extends ActionBarActivity implements Button.OnClickLi
     private static final String ALGORITHM = "SHA-1";
 
     private EditText username;
+    private EditText emailAddress;
     private EditText password;
 
 
@@ -42,6 +43,7 @@ public class LoginActivity extends ActionBarActivity implements Button.OnClickLi
         }
 
         username = (EditText) findViewById(R.id.user_name);
+        emailAddress = (EditText) findViewById(R.id.email_addr);
         password = (EditText) findViewById(R.id.password);
 
         Button prefsBtn = (Button)findViewById(R.id.button_login);
@@ -52,11 +54,15 @@ public class LoginActivity extends ActionBarActivity implements Button.OnClickLi
     public void onClick(View v) {
         if (isEmpty(username.getText())) {
             Toast.makeText(this, "Username can't be empty", Toast.LENGTH_LONG).show();
+        } else if (isEmpty(emailAddress.getText())) {
+            Toast.makeText(this, "Email Address can't be empty", Toast.LENGTH_LONG).show();
         } else if (isEmpty(password.getText())) {
             Toast.makeText(this, "Password can't be empty", Toast.LENGTH_LONG).show();
         } else {
             Intent intent = new Intent(this, MyActivity.class);
-            saveToPrefs(username.getText().toString().trim(), password.getText().toString().trim());
+            saveToPrefs(username.getText().toString().trim(),
+                    emailAddress.getText().toString().trim(),
+                    password.getText().toString().trim());
             startActivity(intent);
         }
     }
@@ -74,7 +80,7 @@ public class LoginActivity extends ActionBarActivity implements Button.OnClickLi
         }
     }
 
-    private void saveToPrefs(final String username, final String password) {
+    private void saveToPrefs(final String username, final String emailAddress, final String password) {
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance(ALGORITHM);
@@ -93,6 +99,7 @@ public class LoginActivity extends ActionBarActivity implements Button.OnClickLi
 
         prefsEditor = sharedPrefs.edit();
         prefsEditor.putString("username", username);
+        prefsEditor.putString("emailAddress", emailAddress);
         prefsEditor.putString("password", sb.toString());
         prefsEditor.apply();
     }
