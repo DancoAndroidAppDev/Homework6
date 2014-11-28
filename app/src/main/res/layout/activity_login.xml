@@ -9,17 +9,13 @@
     <!--android:fitsSystemWindows="true"
     android:clipToPadding="false">-->
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>
-
     <EditText
         android:id="@+id/user_name"
         android:layout_centerHorizontal="true"
         android:layout_width="320dp"
         android:layout_height="64dp"
         android:hint="@string/user_name"
-        android:layout_below="@id/toolbar" />
+        />
 
     <EditText
         android:id="@+id/email_addr"

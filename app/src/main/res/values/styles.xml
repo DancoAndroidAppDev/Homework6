@@ -32,19 +32,20 @@
            parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
         <item name="actionBarStyle">@style/MyActionBar</item>
-        <item name="windowActionBar">false</item>
     </style>
 
     <!-- ActionBar styles -->
     <style name="MyActionBar"
-           parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="windowActionBar">true</item>
+           parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse"
+           >
+        <!--<item name="windowActionBar">true</item>-->
         <item name="android:background">@drawable/action_bar_background</item>
+        <item name="background">@drawable/action_bar_background</item>
+
         <item name="android:homeAsUpIndicator">@drawable/abc_list_pressed_holo_light</item>
         <item name="android:icon">@drawable/ic_launcher</item>
         <!--<item name="android:logo"></item>-->
         <!-- Support library compatibility -->
-        <item name="background">@drawable/action_bar_background</item>
     </style>
 
 </resources>

@@ -36,12 +36,6 @@ public class LoginActivity extends ActionBarActivity implements Button.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            toolbar.setTitleTextColor(getResources().getColor(R.color.white));
-        }
-
         username = (EditText) findViewById(R.id.user_name);
         emailAddress = (EditText) findViewById(R.id.email_addr);
         password = (EditText) findViewById(R.id.password);

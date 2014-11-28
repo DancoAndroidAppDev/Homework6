@@ -43,8 +43,9 @@ public class FlowerViewActivity extends ActionBarActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
-            setSupportActionBar(toolbar);
+            toolbar.setBackgroundColor(getResources().getColor(R.color.primary_color));
             toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+            setSupportActionBar(toolbar);
         }
 
         //enable the Android home button

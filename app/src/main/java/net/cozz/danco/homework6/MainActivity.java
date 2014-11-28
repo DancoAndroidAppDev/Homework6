@@ -55,15 +55,6 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            //enable the Android home button
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            toolbar.setTitleTextColor(getResources().getColor(R.color.white));
-            toolbar.setNavigationIcon(R.drawable.ic_launcher);
-        }
-
         Intent data = getIntent();
         String username = data.getStringExtra("username");
         if (username == null) {

@@ -35,12 +35,10 @@
             android:label="@string/States">
         </activity>
         <activity
-            android:theme="@style/Theme.AppCompat"
             android:name=".ViewFlagActivity"
             android:label="@string/title_activity_flag" >
         </activity>
         <activity
-            android:theme="@style/Theme.AppCompat"
             android:name=".FlowerViewActivity"
             android:label="@string/title_activity_flower_view" >
         </activity>
