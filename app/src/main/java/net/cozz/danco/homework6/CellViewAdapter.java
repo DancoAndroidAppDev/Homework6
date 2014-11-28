@@ -20,14 +20,14 @@ import java.util.Random;
 public class CellViewAdapter extends BaseAdapter {
     private final static String TAG = CellViewAdapter.class.getCanonicalName();
 
-    private final MyActivity context;
+    private final MainActivity context;
     private final List<String> states;
 
     boolean isFirstView = true;
     private final int[] colors = new int[50];
 
     // Constructor
-    public CellViewAdapter(MyActivity context){
+    public CellViewAdapter(MainActivity context){
         this.context = context;
         states = Arrays.asList(context.getResources().getStringArray(R.array.states));
     }

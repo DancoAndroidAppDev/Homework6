@@ -22,6 +22,7 @@
     <string name="show_flower">State Flower</string>
     <string name="start_activity_label">Please Login</string>
     <string name="States">The United States</string>
+    <string name="text_logout">Logout</string>
 
     <string-array name="states">
         <item>Alabama</item>

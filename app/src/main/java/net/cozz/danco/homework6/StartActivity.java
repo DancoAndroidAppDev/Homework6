@@ -16,7 +16,7 @@ public class StartActivity extends Activity {
 
         final Class<? extends Activity> activityClass;
         if (userIsLoggedIn())
-            activityClass = MyActivity.class;
+            activityClass = MainActivity.class;
         else
             activityClass = LoginActivity.class;
 

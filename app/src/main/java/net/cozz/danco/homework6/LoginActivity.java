@@ -59,7 +59,7 @@ public class LoginActivity extends ActionBarActivity implements Button.OnClickLi
         } else if (isEmpty(password.getText())) {
             Toast.makeText(this, "Password can't be empty", Toast.LENGTH_LONG).show();
         } else {
-            Intent intent = new Intent(this, MyActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             saveToPrefs(username.getText().toString().trim(),
                     emailAddress.getText().toString().trim(),
                     password.getText().toString().trim());

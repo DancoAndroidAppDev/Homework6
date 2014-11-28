@@ -8,7 +8,7 @@
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorPrimaryDark">@color/primary_color_dark</item>
         <item name="colorAccent">@color/accent_color</item>
-        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowNoTitle">false</item>
     </style>
 
     <style name="ActionBarButton">
@@ -17,6 +17,7 @@
         <item name="android:background">@null</item>
         <item name="android:ellipsize">end</item>
         <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="windowActionBar">false</item>
     </style>
 
     <style name="ActionBarButtonWhite" parent="@style/ActionBarButton">
@@ -31,14 +32,16 @@
            parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
         <item name="actionBarStyle">@style/MyActionBar</item>
+        <item name="windowActionBar">false</item>
     </style>
 
     <!-- ActionBar styles -->
     <style name="MyActionBar"
            parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="windowActionBar">true</item>
         <item name="android:background">@drawable/action_bar_background</item>
         <item name="android:homeAsUpIndicator">@drawable/abc_list_pressed_holo_light</item>
-        <!--<item name="android:icon">@drawable/</item>-->
+        <item name="android:icon">@drawable/ic_launcher</item>
         <!--<item name="android:logo"></item>-->
         <!-- Support library compatibility -->
         <item name="background">@drawable/action_bar_background</item>

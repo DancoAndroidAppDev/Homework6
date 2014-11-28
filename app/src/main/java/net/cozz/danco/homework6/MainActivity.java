@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,8 +29,8 @@ import java.util.List;
 import java.util.Random;
 
 
-public class MyActivity extends ActionBarActivity {
-    public static final String TAG = MyActivity.class.getCanonicalName();
+public class MainActivity extends ActionBarActivity {
+    public static final String TAG = MainActivity.class.getCanonicalName();
     public static final String VIEW_FLAG = "View flag";
     public static final String VIEW_FLOWER = "View flower";
 
@@ -52,14 +53,16 @@ public class MyActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my);
+        setContentView(R.layout.activity_main);
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        if (toolbar != null) {
-//            setSupportActionBar(toolbar);
-//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//            toolbar.setTitleTextColor(getResources().getColor(R.color.white));
-//        }
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            //enable the Android home button
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+            toolbar.setNavigationIcon(R.drawable.ic_launcher);
+        }
 
         Intent data = getIntent();
         String username = data.getStringExtra("username");
@@ -105,6 +108,14 @@ public class MyActivity extends ActionBarActivity {
                         "Capital is " + capitals.get(position), Toast.LENGTH_LONG).show();
 
                 showView(position, ViewFlagActivity.class);
+            }
+        });
+
+        Button btnLogout = (Button) findViewById(R.id.button_logout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doLogout();
             }
         });
     }

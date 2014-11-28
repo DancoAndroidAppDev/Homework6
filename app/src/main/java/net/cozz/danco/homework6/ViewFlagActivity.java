@@ -49,7 +49,6 @@ public class ViewFlagActivity extends ActionBarActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         }
 
