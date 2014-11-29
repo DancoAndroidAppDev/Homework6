@@ -45,8 +45,11 @@ public class FlowerViewActivity extends ActionBarActivity {
         if (toolbar != null) {
             toolbar.setBackgroundColor(getResources().getColor(R.color.primary_color));
             toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+            toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_launcher));
             setSupportActionBar(toolbar);
         }
+
+        getSupportActionBar().setIcon(R.drawable.ic_launcher);
 
         //enable the Android home button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

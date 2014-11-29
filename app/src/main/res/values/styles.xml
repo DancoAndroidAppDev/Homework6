@@ -44,7 +44,7 @@
 
         <item name="android:homeAsUpIndicator">@drawable/abc_list_pressed_holo_light</item>
         <item name="android:icon">@drawable/ic_launcher</item>
-        <!--<item name="android:logo"></item>-->
+        <item name="android:logo">@drawable/ic_launcher</item>
         <!-- Support library compatibility -->
     </style>
 

@@ -50,12 +50,14 @@ public class ViewFlagActivity extends ActionBarActivity {
         if (toolbar != null) {
             toolbar.setBackgroundColor(getResources().getColor(R.color.primary_color));
             toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+            toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_launcher));
             setSupportActionBar(toolbar);
         }
 
         //enable the Android home button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.ic_launcher);
 
         final List<String> capitals =
                 Arrays.asList(getResources().getStringArray(R.array.capitals));
