@@ -58,21 +58,20 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         Intent data = getIntent();
+        SharedPreferences prefs = getSharedPreferences(LoginActivity.APP_SHARED_PREFS,
+                Activity.MODE_PRIVATE);
         String username = data.getStringExtra("username");
         if (username == null) {
             // try to read username from prefs
-            SharedPreferences prefs = getSharedPreferences(LoginActivity.APP_SHARED_PREFS,
-                    Activity.MODE_PRIVATE);
             username = prefs.getString("username", "dude");
         }
 
-        SharedPreferences sharedPrefs = getApplicationContext().getSharedPreferences(
-                LoginActivity.APP_SHARED_PREFS, Activity.MODE_PRIVATE);
         final String loginFlag = "isInitialLogin";
-        boolean hasLoggedIn = sharedPrefs.getBoolean(loginFlag, false);
+        boolean hasLoggedIn = prefs.getBoolean(loginFlag, false);
         if (!hasLoggedIn) {
-            sharedPrefs.edit().putBoolean(loginFlag, true);
-            sharedPrefs.edit().apply();
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean(loginFlag, true);
+            editor.apply();
 
             MediaPlayer mp = MediaPlayer.create(this, R.raw.welcome);
             mp.start();
