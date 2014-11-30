@@ -6,6 +6,7 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -22,6 +23,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -64,7 +66,21 @@ public class MainActivity extends ActionBarActivity {
             username = prefs.getString("username", "dude");
         }
 
-        setTitle("Welcome " + username);
+        SharedPreferences sharedPrefs = getApplicationContext().getSharedPreferences(
+                LoginActivity.APP_SHARED_PREFS, Activity.MODE_PRIVATE);
+        final String loginFlag = "isInitialLogin";
+        boolean hasLoggedIn = sharedPrefs.getBoolean(loginFlag, false);
+        if (!hasLoggedIn) {
+            sharedPrefs.edit().putBoolean(loginFlag, true);
+            sharedPrefs.edit().apply();
+
+            MediaPlayer mp = MediaPlayer.create(this, R.raw.welcome);
+            mp.start();
+
+            setTitle("Welcome " + username);
+        } else {
+            setTitle(R.string.States);
+        }
 
         final String[] flowers = getResources().getStringArray(R.array.flowers);
         theStates = Arrays.asList(getResources().getStringArray(R.array.states));
