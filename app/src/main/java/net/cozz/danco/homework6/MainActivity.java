@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -75,6 +76,13 @@ public class MainActivity extends ActionBarActivity {
 
             MediaPlayer mp = MediaPlayer.create(this, R.raw.welcome);
             mp.start();
+
+            try {
+                TextToSpeech speech = new TextToSpeech(this, null);
+                speech.speak(username, TextToSpeech.QUEUE_FLUSH, null, null);
+            } catch (final NoSuchMethodError err) {
+                Log.w(TAG, err.getMessage());
+            }
 
             setTitle("Welcome " + username);
         } else {
