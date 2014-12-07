@@ -13,7 +13,9 @@ android {
     }
     buildTypes {
         release {
-            runProguard false
+            apply plugin: 'checkstyle'
+            apply plugin: 'project-report'
+            apply plugin: 'signing'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.ActionBarActivity;
@@ -78,8 +79,10 @@ public class MainActivity extends ActionBarActivity {
             mp.start();
 
             try {
-                TextToSpeech speech = new TextToSpeech(this, null);
-                speech.speak(username, TextToSpeech.QUEUE_FLUSH, null, null);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    TextToSpeech speech = new TextToSpeech(this, null);
+                    speech.speak(username, TextToSpeech.QUEUE_FLUSH, null, null);
+                }
             } catch (final NoSuchMethodError err) {
                 Log.w(TAG, err.getMessage());
             }
@@ -177,7 +180,11 @@ public class MainActivity extends ActionBarActivity {
         prefsEditor.apply();
 
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        finish();
     }
 
 
